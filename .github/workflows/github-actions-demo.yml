@@ -1,25 +1,13 @@
-name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+name: learn-github-actions
+run-name: ${{ github.actor }} is learning GitHub Actions
 on: [push]
 jobs:
-  deploy:
-	  runs-on: ubuntu-latest
-	  steps:
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
           node-version: '14'
-  	  - name: Cache dependencies
-    	  uses: actions/cache@v1
-    	  with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-  	  - run: npm ci
-  	  - run: npm run build
-  	  - name: Deploy
-    	  uses: peaceiris/actions-gh-pages@v3
-    	  With:
-deploy_key: ${{ secrets.DEMO_ACTIONS_DEPLOY_KEY }}
-      	publish_dir: _site
+      - run: npm install -g bats
+      - run: bats -v
