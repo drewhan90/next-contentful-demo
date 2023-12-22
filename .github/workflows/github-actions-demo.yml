@@ -9,26 +9,27 @@ on:
     - main
 jobs:
   deploy:
-	runs-on: ubuntu-latest
-	steps:
-  	- uses: actions/checkout@v4
-    - uses: actions/setup-node@v3
-      with:
-        node-version: '14'
+	  runs-on: ubuntu-latest
 
-  	- name: Cache dependencies
-    	uses: actions/cache@v1
-    	with:
-      	path: ~/.npm
-      	key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-      	restore-keys: |
-        	${{ runner.os }}-node-
+	  steps:
+  	  - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
 
-  	- run: npm ci
-  	- run: npm run build
+  	  - name: Cache dependencies
+    	  uses: actions/cache@v1
+    	  with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
-  	- name: Deploy
-    	uses: peaceiris/actions-gh-pages@v3
-    	With:
+  	  - run: npm ci
+  	  - run: npm run build
+
+  	  - name: Deploy
+    	  uses: peaceiris/actions-gh-pages@v3
+    	  With:
 deploy_key: ${{ secrets.DEMO_ACTIONS_DEPLOY_KEY }}
       	publish_dir: _site
