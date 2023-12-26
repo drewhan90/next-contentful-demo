@@ -6,5 +6,5 @@ module.exports = {
   },
   basePath: '',
   assetPrefix: '',
-  outDir: './out'
+  distDir: './out'
 };
