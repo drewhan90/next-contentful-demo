@@ -36,5 +36,4 @@ jobs:
         if: github.ref == 'refs/heads/main'
         with:
           deploy_key: ${{ secrets.DEMO_ACTIONS_DEPLOY_KEY }}
-          publish_dir: /publish
-          branch: gh-pages
+          publish_dir: ./out

@@ -4,6 +4,7 @@ module.exports = {
     loader: 'custom',
     formats: ['image/avif', 'image/webp']
   },
-  basePath: '/publish',
-  assetPrefix: '/publish'
+  basePath: '',
+  assetPrefix: '',
+  outDir: './out'
 };
