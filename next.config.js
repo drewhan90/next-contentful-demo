@@ -2,6 +2,8 @@
 module.exports = {
   images: {
     loader: 'custom',
-    formats: ['image/avif', 'image/webp'],
+    formats: ['image/avif', 'image/webp']
   },
-}
+  basePath: '/publish',
+  assetPrefix: '/publish'
+};
