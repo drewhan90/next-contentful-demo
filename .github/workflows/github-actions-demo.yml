@@ -1,4 +1,4 @@
-name: learn-github-actions
+name: deploy-github-page
 run-name: ${{ github.actor }} is learning GitHub Actions
 on:
   push:
